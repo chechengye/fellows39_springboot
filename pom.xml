@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<!--
+		 <artifactId>spring-boot-dependencies</artifactId>
+		 来真正管理Spring Boot应用里面的所有依赖版本；
+		 版本仲裁中心；我们导入依赖时，可以不填写版本号。
+		 那jar包谁帮我们默认引入的呢？
+	-->
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.2.5.RELEASE</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>com.weichuang</groupId>
+	<artifactId>fellows39_springboot</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>fellows39_springboot</name>
+	<description>Demo project for Spring Boot</description>
+
+	<properties>
+		<java.version>1.8</java.version>
+	</properties>
+
+	<dependencies>
+		<!--
+		spring-boot-starter : 称为SpringBoot场景启动器；负责帮我们导入相关的组件或者是依赖
+		spring-boot-starter-web : 导入web模块所依赖的所有组件；所以当我们想要使用某一模块的时候，就可以导入相关的starters
+		启动器中包含各种所需的依赖包
+		-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>org.junit.vintage</groupId>
+					<artifactId>junit-vintage-engine</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+	</dependencies>
+	<!--这个插件可以将应用打包成一个jar默认的。可以修改成war-->
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
