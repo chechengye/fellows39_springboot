@@ -1,5 +1,6 @@
 package com.weichuang.fellows39_springboot;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -15,6 +16,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  *	J2EE的整体整合解决方案或自动配置都在spring-boot-autoconfigure-2.2.5.jar
  */
 @SpringBootApplication
+//用mapper扫描注解，替换mapper接口中的所有@Mapper
+@MapperScan("com.weichuang.fellows39_springboot.mapper")
 public class Fellows39SpringbootApplication {
 
 	public static void main(String[] args) {

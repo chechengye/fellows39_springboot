@@ -7,6 +7,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import javax.sql.DataSource;
+import java.sql.SQLException;
+
 /**
  * SpringBoot  选用的是 slf4j - logback记录日志
  */
@@ -15,9 +18,22 @@ class Fellows39SpringbootApplicationTests {
 	Logger logger = LoggerFactory.getLogger(Fellows39SpringbootApplicationTests.class);
 	@Autowired
 	Person person;
+
+	@Autowired
+	DataSource dataSource;
 	@Test
 	void contextLoads() {
 		System.out.println(person);
+	}
+
+	@Test
+	void jdbcFn(){
+		System.out.println("jdbcFn : " + dataSource.getClass());
+		try {
+			System.out.println("jdbcFn : " + dataSource.getConnection());
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 	/**
