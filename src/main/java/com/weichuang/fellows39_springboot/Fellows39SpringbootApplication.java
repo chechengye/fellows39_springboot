@@ -20,8 +20,19 @@ import org.springframework.cache.annotation.EnableCaching;
  *
  * Redis相关：
  * Redis 是一个开源（BSD许可）的，内存中的数据结构存储系统，它可以用作数据库、缓存和消息中间件。
- * 面试题：问到redis，几乎必问 它支持五种类型的数据结构：
+ * 面试题：问到redis，几乎必问 它支持五种数据类型： 数据结构为： key - value
  * string 字符串（strings）， hash散列（hashes）， list列表（lists）， set集合（sets）， zset有序集合（sorted sets）
+ *
+ * RabbitMQ相关
+ *
+ * docker run -d -p 5672:5672 -p 15672:15672 --name rabbitmq_01 99cbda713eff
+ * 访问：ip : 5672 输入用户名与密码 : guest
+ *
+ * direct : 单播式的，点对点式。会默认匹配到一个对应的队列
+ * fanout ； 广播式的，发送消息到所有绑定的队列
+ * topic : 订阅式的交换器，匹配一定的路由键规则
+ * 
+ *
  */
 @SpringBootApplication
 //用mapper扫描注解，替换mapper接口中的所有@Mapper
