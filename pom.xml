@@ -80,10 +80,10 @@
 	</dependencies>
 	<!--这个插件可以将应用打包成一个jar默认的。可以修改成war-->
 	<build>
-        <resources>
-            <!-- maven项目中src源代码下的xml等资源文件编译进classes文件夹，
+        <!--<resources>
+            &lt;!&ndash; maven项目中src源代码下的xml等资源文件编译进classes文件夹，
               注意：如果没有这个，它会自动搜索resources下是否有mapper.xml文件，
-              如果没有就会报org.apache.ibatis.binding.BindingException: Invalid bound statement (not found): com.pet.mapper-->
+              如果没有就会报org.apache.ibatis.binding.BindingException: Invalid bound statement (not found): com.pet.mapper&ndash;&gt;
             <resource>
                 <directory>src/main/java</directory>
                 <includes>
@@ -91,11 +91,11 @@
                 </includes>
             </resource>
 
-            <!--将resources目录下的配置文件编译进classes文件  -->
+            &lt;!&ndash;将resources目录下的配置文件编译进classes文件  &ndash;&gt;
             <resource>
                 <directory>src/main/resources</directory>
             </resource>
-        </resources>
+        </resources>-->
 
         <plugins>
 			<plugin>

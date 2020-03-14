@@ -3,6 +3,7 @@ package com.weichuang.fellows39_springboot;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cache.annotation.EnableCaching;
 
 //注解： 来标识/标注 一个主程序类，说明它是一个SpringBoot应用
 /**
@@ -18,6 +19,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 //用mapper扫描注解，替换mapper接口中的所有@Mapper
 @MapperScan("com.weichuang.fellows39_springboot.mapper")
+//开启基于注解的缓存
+@EnableCaching
 public class Fellows39SpringbootApplication {
 
 	public static void main(String[] args) {

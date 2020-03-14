@@ -43,4 +43,11 @@ public class HelloController {
         return userList.get(0);*/
         return iUserService.getUserById(id);
     }
+
+    @PostMapping("/updateUser")
+    public User updateUser(User user){
+        iUserService.updateUser(user);
+        return user;
+    }
+
 }
