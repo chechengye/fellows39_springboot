@@ -1,7 +1,12 @@
 package com.weichuang.fellows39_springboot.pojo;
 
 
-public class Employee {
+import java.io.Serializable;
+
+/**
+ * Serializable ： 帮我们进行序列化
+ */
+public class Employee implements Serializable{
     private int id;
     private String name;
     private String email;

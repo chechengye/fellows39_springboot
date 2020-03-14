@@ -15,6 +15,13 @@ import org.springframework.cache.annotation.EnableCaching;
  *				XXXAutoConfiguration;就相当于导入了场景需要所有的组件。并配置好。
  *			        META-INF/spring.factories文件夹下面寻找对应的类
  *	J2EE的整体整合解决方案或自动配置都在spring-boot-autoconfigure-2.2.5.jar
+ *
+ *
+ *
+ * Redis相关：
+ * Redis 是一个开源（BSD许可）的，内存中的数据结构存储系统，它可以用作数据库、缓存和消息中间件。
+ * 面试题：问到redis，几乎必问 它支持五种类型的数据结构：
+ * string 字符串（strings）， hash散列（hashes）， list列表（lists）， set集合（sets）， zset有序集合（sorted sets）
  */
 @SpringBootApplication
 //用mapper扫描注解，替换mapper接口中的所有@Mapper

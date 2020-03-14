@@ -1,11 +1,15 @@
 package com.weichuang.fellows39_springboot;
 
+import com.weichuang.fellows39_springboot.pojo.Employee;
 import com.weichuang.fellows39_springboot.pojo.Person;
+import com.weichuang.fellows39_springboot.service.EmployeeService;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.StringRedisTemplate;
 
 import javax.sql.DataSource;
 import java.sql.SQLException;
@@ -18,6 +22,17 @@ class Fellows39SpringbootApplicationTests {
 	Logger logger = LoggerFactory.getLogger(Fellows39SpringbootApplicationTests.class);
 	@Autowired
 	Person person;
+
+	//缓存相关对象获取
+	@Autowired
+	RedisTemplate redisTemplate;
+	@Autowired
+	StringRedisTemplate stringRedisTemplate;
+	@Autowired
+	RedisTemplate empRedisTemplate;
+	@Autowired
+	EmployeeService employeeService;
+
 
 	@Autowired
 	DataSource dataSource;
@@ -50,4 +65,29 @@ class Fellows39SpringbootApplicationTests {
 		logger.error("这是error日志");
 	}
 
+	/**
+	 * stringRedisTemplate.opsForValue() [String类型的操作]
+	 * stringRedisTemplate.opsForList() [List类型操作]
+	 * stringRedisTemplate.opsForHash() [hash类型操作]
+	 * stringRedisTemplate.opsForSet() [set集合操作]
+	 * stringRedisTemplate.opsForZSet() [zse有序集合操作]
+	 */
+	@Test
+	void cacheTestFn(){
+		//stringRedisTemplate.opsForValue().append("msg" , "hello");
+		System.out.println(stringRedisTemplate.opsForValue().get("msg"));
+		//stringRedisTemplate.opsForList().leftPush("mylist" , "10");
+		//stringRedisTemplate.opsForList().leftPush("mylist" , "20");
+		//stringRedisTemplate.opsForHash()
+		//stringRedisTemplate.opsForSet().
+	}
+	@Test
+	void cacheTestFn2(){
+		Employee employee = employeeService.getEmployeeById(5);
+		//默认保存的对象，使用的jdk序列化机制，序列化后的数据保存到redis中
+		//1、自己将对象转换成为json格式:不推荐
+		//2、redisTemplate修改它的默认的序列化规则 : 推荐
+		//redisTemplate.opsForValue().set("emp-05" , employee);
+		empRedisTemplate.opsForValue().set("emp-05" , employee);
+	}
 }

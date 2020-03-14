@@ -21,4 +21,8 @@ public class EmploeeController {
         es.updateEmployee(employee);
         return employee;
     }
+    @RequestMapping("/deleteEmployeeById")
+    public void deleteEmployeeById(int id){
+        es.deleteEmployeeById(id);
+    }
 }

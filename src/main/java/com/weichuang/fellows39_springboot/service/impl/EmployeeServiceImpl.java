@@ -4,6 +4,7 @@ import com.weichuang.fellows39_springboot.mapper.EmployeeMapper;
 import com.weichuang.fellows39_springboot.pojo.Employee;
 import com.weichuang.fellows39_springboot.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
@@ -29,7 +30,7 @@ public class EmployeeServiceImpl implements EmployeeService {
      * @param id
      * @return
      */
-    @Cacheable(cacheNames = {"emp"})
+    //@Cacheable(cacheNames = {"emp"})
     @Override
     public Employee getEmployeeById(int id) {
         System.out.println("员工:" + id + "号");
@@ -46,5 +47,16 @@ public class EmployeeServiceImpl implements EmployeeService {
     public Employee updateEmployee(Employee employee) {
         employeeMapper.updateEmployee(employee);
         return employee;
+    }
+    /**
+     *  key : 可以指定删除一个缓存记录 ,推荐使用的
+     *  allEntries : 若为true删除指定缓存组件中的所有缓存记录;
+     *  beforeInvocation : false ，方法正常执行之后。若方法中出现异常；就不会清除缓存。
+     *      true ： 方法执行前进行缓存清除
+     */
+    @CacheEvict(cacheNames = "emp" ,key = "#id")
+    public void deleteEmployeeById(int id){
+        employeeMapper.deleteEmployeeById(id);
+        int i = 1/0;
     }
 }
