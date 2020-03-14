@@ -31,7 +31,7 @@ import org.springframework.cache.annotation.EnableCaching;
  * direct : 单播式的，点对点式。会默认匹配到一个对应的队列
  * fanout ； 广播式的，发送消息到所有绑定的队列
  * topic : 订阅式的交换器，匹配一定的路由键规则
- * 
+ *
  *
  */
 @SpringBootApplication
