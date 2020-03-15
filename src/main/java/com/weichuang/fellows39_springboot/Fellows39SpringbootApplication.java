@@ -1,6 +1,7 @@
 package com.weichuang.fellows39_springboot;
 
 import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.amqp.rabbit.annotation.EnableRabbit;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cache.annotation.EnableCaching;
@@ -32,6 +33,8 @@ import org.springframework.cache.annotation.EnableCaching;
  * fanout ； 广播式的，发送消息到所有绑定的队列
  * topic : 订阅式的交换器，匹配一定的路由键规则
  *
+ *  @RabbitListener + @EnableRabbit配合使用
+ *  AmqpAdmin ： 创建交换器、队列、绑定规则
  *
  */
 @SpringBootApplication
@@ -39,6 +42,7 @@ import org.springframework.cache.annotation.EnableCaching;
 @MapperScan("com.weichuang.fellows39_springboot.mapper")
 //开启基于注解的缓存
 @EnableCaching
+@EnableRabbit
 public class Fellows39SpringbootApplication {
 
 	public static void main(String[] args) {
